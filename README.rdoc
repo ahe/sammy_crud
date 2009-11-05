@@ -1,7 +1,7 @@
 = SammyCrud (Rails generator)
 
 Sammy is a tiny javascript framework built on top of jQuery inspired by Ruby's Sinatra.
-=> http://github.com/quirkey/sammy
+http://github.com/quirkey/sammy
 
 SammyCrud is a Rails generator that creates a dynamic version of the basic scaffold (using Sammy & Ajax).
 All your CRUD (Create-Read-Update-Delete) operations will happen on the same page.
@@ -25,7 +25,7 @@ Insert the Javascript includes into your layout :
 
 - $ ./script/server
 
-=> http://localhost:3000/articles
+Launch http://localhost:3000/articles
 
 
 = Override default behaviors
