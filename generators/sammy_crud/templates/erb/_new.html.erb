@@ -1,0 +1,6 @@
+<%% form_for <%= model_name %>, :url => "#/create", :html => { :id => "<%= plural %>_form" } do |f| %>
+  <%%= render :partial => f %>
+  <p>
+    <%%= f.submit "Create" %>
+  </p>
+<%% end %>

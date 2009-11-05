@@ -1,0 +1,20 @@
+*********
+  USAGE
+*********
+
+Example : 
+
+$ ./script/generate sammy_crud article
+
+will generate CRUD views (ERB) & the controller for the Article model.
+
+This model and his associated table MUST exist before sammy_crud is executed.
+
+If you prefer Haml, this command is for you :
+
+$ ./script/generate sammy_crud article haml
+
+Enjoy!
+
+http://github.com/ahe/sammy_crud
+

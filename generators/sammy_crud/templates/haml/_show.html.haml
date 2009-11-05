@@ -1,0 +1,7 @@
+<% klass.columns.each do |col| -%>
+%p
+  %strong
+    <%= col.name.camelcase %>
+  %br/
+  = <%= model_name -%>.<%= col.name.downcase %>
+<% end -%>

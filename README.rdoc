@@ -1,0 +1,56 @@
+= SammyCrud (Rails generator)
+
+Sammy is a tiny javascript framework built on top of jQuery inspired by Ruby's Sinatra.
+=> http://github.com/quirkey/sammy
+
+SammyCrud is a Rails generator that creates a dynamic version of the basic scaffold (using Sammy & Ajax).
+All your CRUD (Create-Read-Update-Delete) operations will happen on the same page.
+It is for example very useful for quick admin interfaces.
+
+
+= Quick start
+
+- $ rails sammyonrails
+- $ ./script/plugin install http://github.com/ahe/sammy_crud.git
+- $ ./script/generate model article title:string author:string
+- $ rake db:migrate
+- $ ./script/generate sammy_crud article
+
+Insert the Javascript includes into your layout :
+
+  <%= javascript_include_tag 'jquery-1.3.2.min' %>
+  <%= javascript_include_tag 'jquery-ui-1.7.2.custom.min' %>  
+  <%= javascript_include_tag 'sammy' %>
+  <%= javascript_include_tag 'sammy_crud' %>
+
+- $ ./script/server
+
+=> http://localhost:3000/articles
+
+
+= Override default behaviors
+
+If you want to customize one of the action, you can easily rewrite it :
+
+  <script type="text/javascript">
+    $(function() {
+      var app = newSammyApp();
+
+      app.route('get', '#/show/:id', function() { with(this) {
+        alert('#/show/:id has been redefined!');
+      }});
+
+      addCRUDRoutes(app, 'articles');
+      app.run();
+    });
+  </script>
+
+
+= Prefix your URLs
+
+You can simply add a prefix to your URLs like this :
+
+  addCRUDRoutes(app, 'articles', 'my_prefix/');
+
+
+Copyright (c) 2009 Anthony Heukmes, released under the MIT license.

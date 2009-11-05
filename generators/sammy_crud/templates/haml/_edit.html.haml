@@ -1,0 +1,4 @@
+- form_for <%= model_name %>, :url => "#/update/#{<%= model_name %>.id}", :html => { :id => "<%= plural %>_form" } do |f|
+  = render :partial => f
+  %p
+    = f.submit "Update"

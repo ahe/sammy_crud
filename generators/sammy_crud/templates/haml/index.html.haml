@@ -1,0 +1,30 @@
+%h1
+  Listing <%= plural %>
+
+%table
+  %thead
+    %tr
+      <% klass.columns.each do |col| -%>
+%th
+        <%= col.name.camelcase %>
+      <% end %>
+      
+  %tbody#<%= plural %>_list
+    = render @<%= plural %>
+
+#<%= plural %>_notif{ :style => 'display:none' }
+%a{ :href => "#/new" }
+  %img{ :src => "/images/sammy_crud/add.png", :alt => "add", :width => 16, :height => 16, :border => 0 }
+%a{ :href => "#/new" }
+  Add a new <%= model_name %>
+
+#<%= plural %>_edit{ :style => 'display: none' }
+#<%= plural %>_details{ :style => 'display: none' }
+%br/
+
+:javascript
+  $(function() {
+    var app = newSammyApp();
+    addCRUDRoutes(app, '<%= plural %>');
+    app.run();
+  });

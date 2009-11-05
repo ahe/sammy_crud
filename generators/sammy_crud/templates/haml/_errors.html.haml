@@ -1,0 +1,10 @@
+%br/
+
+- if @<%= model_name %> && @<%= model_name %>.invalid?
+  = error_messages_for :<%= model_name %>
+
+- if flash[:error].present?
+  %div{ :style => "background-color: #ffcdd1; border: 2px solid #e10c0c; padding:5px" }
+    = flash[:error]
+    
+%br/

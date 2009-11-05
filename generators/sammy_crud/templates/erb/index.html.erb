@@ -1,0 +1,31 @@
+<h1>Listing <%= plural %></h1>
+<table>
+  <thead>
+    <tr>
+    <% klass.columns.each do |col| -%>
+  <th><%= col.name.camelcase %></th>
+    <% end -%>
+</tr>
+  </thead>
+  <tbody id="<%= plural %>_list">    
+    <%%= render @<%= plural %> %>
+  </tbody>
+</table>
+
+<div id="<%= plural %>_notif" style="display:none"></div>
+<a href="#/new">
+  <img src="/images/sammy_crud/add.png" alt="add" width="16" height="16" border="0"/>
+</a>
+<a href="#/new">Add a new <%= model_name %></a>
+
+<div id="<%= plural %>_edit" style="display: none"></div>
+<div id="<%= plural %>_details" style="display: none"></div>
+<br/>
+
+<script type="text/javascript">
+  $(function() {
+    var app = newSammyApp();
+    addCRUDRoutes(app, '<%= plural %>');
+    app.run();
+  });
+</script>

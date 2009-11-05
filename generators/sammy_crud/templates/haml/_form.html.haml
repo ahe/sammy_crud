@@ -1,0 +1,9 @@
+<% klass.columns.each do |col| -%>
+<% if col.name.downcase != 'id' -%>  
+%p
+  %label
+    <%= col.name.camelcase %>
+  %br/
+  = form.<%= field_type(col.type.to_s) %> :<%= col.name.downcase %>
+<% end -%>
+<% end -%>
