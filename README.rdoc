@@ -11,21 +11,28 @@ It is for example very useful for quick admin interfaces.
 = Quick start
 
 - $ rails sammyonrails
-- $ ./script/plugin install http://github.com/ahe/sammy_crud.git
+- $ ./script/plugin install git://github.com/ahe/sammy_crud.git
 - $ ./script/generate model article title:string author:string
 - $ rake db:migrate
 - $ ./script/generate sammy_crud article
 
 Insert the Javascript includes into your layout :
 
-  <%= javascript_include_tag 'jquery-1.3.2.min' %>
-  <%= javascript_include_tag 'jquery-ui-1.7.2.custom.min' %>  
-  <%= javascript_include_tag 'sammy' %>
-  <%= javascript_include_tag 'sammy_crud' %>
+  <%= javascript_include_tag 'sammy/jquery-1.3.2.min' %>
+  <%= javascript_include_tag 'sammy/jquery-ui-1.7.2.custom.min' %>  
+  <%= javascript_include_tag 'sammy/sammy' %>
+  <%= javascript_include_tag 'sammy/sammy_crud' %>
 
 - $ ./script/server
 
 Launch http://localhost:3000/articles
+
+
+= HAML
+
+If you prefer Haml, this command is for you :
+
+$ ./script/generate sammy_crud article haml
 
 
 = Override default behaviors
@@ -51,6 +58,7 @@ If you want to customize one of the action, you can easily rewrite it :
 You can simply add a prefix to your URLs like this :
 
   addCRUDRoutes(app, 'articles', 'my_prefix/');
+
 
 
 Copyright (c) 2009 Anthony Heukmes, released under the MIT license.
