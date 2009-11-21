@@ -2,13 +2,15 @@ function newSammyApp() {
 	return new Sammy.Application(function() { with(this) {}});
 }
 
-function addCRUDRoutes(app, name, prefix) {
+function addCRUDRoutes(app, name, prefix, url_prefix) {
 	
 	if(prefix == null)
 		prefix = '';
+	if(url_prefix == null)
+	  url_prefix = '';
 	
   app.get('#/' + prefix + 'show/:id', function() { with(this) {
-    partial('/' + name +'/' + params['id'], function(html) {
+    partial('/' + url_prefix + name +'/' + params['id'], function(html) {
       $('#' + name + '_details').html(html);
       $('#' + name + '_edit').hide();
       $('#' + name + '_details').slideDown();
@@ -16,7 +18,7 @@ function addCRUDRoutes(app, name, prefix) {
   }});
 
   app.get('#/' + prefix + 'new', function() { with(this) {
-    partial('/' + name + '/new', function(html) {
+    partial('/' + url_prefix + name + '/new', function(html) {
       $('#' + name + '_edit').html(html);
       $('#' + name + '_details').hide();
       $('#' + name + '_edit').slideDown();
@@ -27,12 +29,12 @@ function addCRUDRoutes(app, name, prefix) {
     var data = $('#' + name + '_form').serialize();
     $.ajax({
       type: "POST",
-      url: '/' + name,
+      url: '/' + url_prefix + name,
       data: data,
       complete: function(xhr, statusText) {
         if(xhr.status == 200) {
           var id = xhr.responseText;
-          partial('/' + name +'/' + id + '?row=true', function(html) {
+          partial('/' + url_prefix + name +'/' + id + '?row=true', function(html) {
             $('#' + name + '_list').append(html);
             $('#' + name + '_' + id).effect("highlight", {}, 3000);
           });
@@ -44,7 +46,7 @@ function addCRUDRoutes(app, name, prefix) {
   }});
  
   app.get('#/' + prefix + 'edit/:id', function() { with(this) {
-    partial('/' + name + '/edit/' + params['id'], function(html) {
+    partial('/' + url_prefix + name + '/edit/' + params['id'], function(html) {
       $('#' + name + '_edit').html(html);
       $('#' + name + '_details').hide();
       $('#' + name + '_edit').slideDown();
@@ -56,7 +58,7 @@ function addCRUDRoutes(app, name, prefix) {
     var data = $('#' + name + '_form').serialize();
     $.ajax({
       type: "POST",
-      url: '/' + name + '/' + id,
+      url: '/' + url_prefix + name + '/' + id,
       data: data,
       complete: function(xhr, statusText) {
         if(xhr.status == 200) {
@@ -76,7 +78,7 @@ function addCRUDRoutes(app, name, prefix) {
     $.ajax({
       type: "POST",
       data: "_method=delete",
-      url: '/' + name + '/' + params['id'],
+      url: '/' + url_prefix + name + '/' + params['id'],
       complete: function(xhr, statusText) {
         if(xhr.status == 200)
           $('#' + name + '_' + id).remove();
