@@ -4,9 +4,9 @@
 %table
   %thead
     %tr
-      <% klass.columns.each do |col| -%>
+      <% columns.each do |col| -%>
 %th
-        <%= col.name.camelcase %>
+        <%= col[0].camelcase %>
       <% end %>
       
   %tbody#<%= plural %>_list

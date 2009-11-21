@@ -1,7 +1,7 @@
 %tr{ :id => "<%= plural %>_#{<%= model_name %>.id}" }
-<% klass.columns.each do |col| -%>
+<% columns.each do |col| -%>
   %td
-    = <%= model_name -%>.<%= col.name.downcase %>
+    = <%= model_name -%>.<%= col[0].downcase %>
 <% end -%>
   %td
     %a{ :href => "#/show/#{<%= model_name -%>.id}" }

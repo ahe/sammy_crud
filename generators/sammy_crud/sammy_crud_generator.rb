@@ -47,12 +47,30 @@ class SammyCrudGenerator < Rails::Generator::NamedBase
     @klass ||= Kernel.const_get("#{camel}")
   end
   
+  def columns
+    @columns ||= extract_columns
+  end
+  
+  def extract_columns
+    @columns = []
+    if klass.respond_to?(:columns)
+      klass.columns.each do |column|
+        @columns << [column.name, column.type.to_s]
+      end
+    else # mongomapper
+      klass.keys.each do |key, value|
+        @columns << [key, value.type.to_s]
+      end
+    end
+    @columns
+  end
+  
   def field_type(type)
-    if type == 'boolean'
+    if type.downcase == 'boolean'
       "check_box"
-    elsif type == 'date'
+    elsif type.downcase == 'date'
       "date_select"
-    elsif type == 'datetime'
+    elsif type.downcase == 'datetime' || type.downcase == 'time'
       "datetime_select"
     else
       "text_field"

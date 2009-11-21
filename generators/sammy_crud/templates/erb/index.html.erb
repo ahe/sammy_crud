@@ -2,8 +2,8 @@
 <table>
   <thead>
     <tr>
-    <% klass.columns.each do |col| -%>
-  <th><%= col.name.camelcase %></th>
+    <% columns.each do |col| -%>
+  <th><%= col[0].camelcase %></th>
     <% end -%>
 </tr>
   </thead>

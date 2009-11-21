@@ -1,9 +1,9 @@
-<% klass.columns.each do |col| -%>
-<% if col.name.downcase != 'id' -%>  
+<% columns.each do |col| -%>
+<% if col[0].downcase != 'id' && col[0].downcase != '_id' -%>  
 <p>
-  <label><%= col.name.camelcase %></label>
+  <label><%= col[0].camelcase %></label>
   <br/>
-  <%%= form.<%= field_type(col.type.to_s) %> :<%= col.name.downcase -%> %>
+  <%%= form.<%= field_type(col[1]) %> :<%= col[0].downcase -%> %>
 </p>
 <% end -%>
 <% end -%>

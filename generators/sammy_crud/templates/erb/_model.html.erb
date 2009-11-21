@@ -1,6 +1,6 @@
 <tr id="<%= plural %>_<%%= <%= model_name %>.id %>">
-<% klass.columns.each do |col| -%>
-  <td><%%= <%= model_name -%>.<%= col.name.downcase %> %></td>
+<% columns.each do |col| -%>
+  <td><%%= <%= model_name -%>.<%= col[0].downcase %> %></td>
 <% end -%>
   <td>
     <a href="#/show/<%%= <%= model_name -%>.id %>"><img src="/images/sammy_crud/eye.png" alt="show" width="16" height="16" border="0"/></a>

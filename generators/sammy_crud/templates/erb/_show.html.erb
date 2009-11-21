@@ -1,7 +1,7 @@
-<% klass.columns.each do |col| -%>
+<% columns.each do |col| -%>
 <p>
-  <strong><%= col.name.camelcase %></strong>
+  <strong><%= col[0].camelcase %></strong>
   <br/>
-  <%%= <%= model_name -%>.<%= col.name.downcase %> %>
+  <%%= <%= model_name -%>.<%= col[0].downcase %> %>
 </p>
 <% end -%>

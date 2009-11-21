@@ -1,6 +1,10 @@
 class <%= model_name.pluralize.camelcase %>Controller < ApplicationController
-
+  
+  <% if klass.respond_to?(:columns) %>
   rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
+  <% else %>
+  rescue_from MongoMapper::DocumentNotFound, :with => :record_not_found
+  <% end %>
 
   def index
     @<%= plural %> = <%= camel %>.all
