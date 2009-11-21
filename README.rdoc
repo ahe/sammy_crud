@@ -35,6 +35,11 @@ If you prefer Haml, this command is for you :
 $ ./script/generate sammy_crud article haml
 
 
+= MongoMapper
+
+SammyCrud is now compatible with MongoMapper!
+
+
 = Override default behaviors
 
 If you want to customize one of the action, you can easily rewrite it :
